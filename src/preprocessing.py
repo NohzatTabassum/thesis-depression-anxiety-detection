@@ -94,9 +94,16 @@ def prepare_train_test_data(
     """
     feature_cols = config.FEATURE_SETS[feature_set_name]
     
-    # Identify numerical vs categorical columns within selected feature set
-    categorical_cols = [c for c in feature_cols if c in config.DEMOGRAPHIC_COLS]
-    numerical_cols = [c for c in feature_cols if c not in categorical_cols]
+    # Auto-detect numerical vs categorical columns based on dataframe types
+    categorical_cols = []
+    numerical_cols = []
+    for c in feature_cols:
+        if pd.api.types.is_numeric_dtype(df[c]):
+            # Optional: Some numeric columns with few unique values could be categorical, 
+            # but for now we trust the dtype. 
+            numerical_cols.append(c)
+        else:
+            categorical_cols.append(c)
 
     X = df[feature_cols]
     y = df[target_col].values

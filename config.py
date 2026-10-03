@@ -45,32 +45,32 @@ GAD7_CUTOFF = 10
 # ==========================================
 # Section B: Demographics
 DEMOGRAPHIC_COLS = [
-    "gender",
-    "age_group",
-    "university_type",
-    "academic_discipline",
-    "cgpa_bracket",
-    "graduation_timeline",
-    "family_monthly_income",
-    "financial_pressure",
+    "b1_gender",
+    "b2_age",
+    "b3_university_type",
+    "b4_discipline",
+    "b5_cgpa",
+    "b6_graduation_status",
+    "b7_income",
+    "b8_financial_pressure",
 ]
 
 # Section C: Job-Search Behavioral Signals (14 Items)
 JOB_SEARCH_COLS = [
-    "c1_search_duration_months",
-    "c2_applications_per_week",
-    "c3_weekly_hours_spent",
-    "c4_late_night_search_freq",
-    "c5_platform_count",
-    "c6_rejection_count_est",
-    "c7_ghosting_rate_perc",
-    "c8_interview_invites_count",
-    "c9_cv_customization_freq",
-    "c10_peer_comparison_freq",
-    "c11_family_expectation_pressure",
-    "c12_unemployment_stigma_fear",
-    "c13_future_career_hopelessness",
-    "c14_daily_screen_time_hours",
+    "c1_search_duration",
+    "c2_apps_per_week",
+    "c3_hrs_per_week",
+    "c4_late_night",
+    "c5_platforms",
+    "c6_rejections",
+    "c7_ghosting_rate",
+    "c8_interview_invites",
+    "c9_cv_customization",
+    "c10_peer_comparison",
+    "c11_family_pressure",
+    "c12_stigma_fear",
+    "c13_hopelessness",
+    "c14_screen_time",
 ]
 
 # Section D: Multidimensional Scale of Perceived Social Support (MSPSS, 12 Items)
