@@ -16,12 +16,12 @@
 | [Phase 0](#phase-0-github-repository-setup) | GitHub Repository Setup | 🤝 | ✅ DONE |
 | [Phase 1](#phase-1-google-form-design--structure) | Google Form Design & Structure | 🤖→👤 | ✅ DONE |
 | [Phase 2](#phase-2-project-folder-structure--python-pipeline-skeleton) | Project Folder Structure & Python Pipeline Skeleton | 🤖 | ✅ DONE |
-| [Phase 3](#phase-3-data-collection--google-form-deployment) | Data Collection (Google Form Deployment) | 👤 | 🟡 IN PROGRESS (Pilot n=67 Done) |
+| [Phase 3](#phase-3-data-collection--google-form-deployment) | Data Collection (Google Form Deployment) | 👤 | 🟡 IN PROGRESS (Target: 200–300, Pilot n=67 Done) |
 | [Phase 4](#phase-4-data-ingestion--eda) | Data Ingestion, Quality Audit & EDA | 🤖 | ✅ DONE |
-| [Phase 5](#phase-5-preprocessing-pipeline) | Preprocessing Pipeline & Stratified Split | 🤖 | 📋 UP NEXT |
-| [Phase 6](#phase-6-ml-modeling--cv) | ML Modeling & Cross-Validation | 🤖 | 📋 TODO |
-| [Phase 7](#phase-7-shap-explainability--error-analysis) | SHAP Explainability & Error Analysis | 🤖 | 📋 TODO |
-| [Phase 8](#phase-8-results-documentation--thesis-figures) | Results Documentation & Thesis Figures | 🤖 | 📋 TODO |
+| [Phase 5](#phase-5-preprocessing-pipeline) | Preprocessing Pipeline & Stratified Split | 🤖 | 🟡 TESTED (Sanity Check on Pilot n=45 ✅) |
+| [Phase 6](#phase-6-ml-modeling--cv) | ML Modeling & Cross-Validation | 🤖 | 🟡 TESTED (Dry-Run on Pilot n=45 ✅) |
+| [Phase 7](#phase-7-shap-explainability--error-analysis) | SHAP Explainability & Error Analysis | 🤖 | 🟡 TESTED (Dry-Run on Pilot n=45 ✅) |
+| [Phase 8](#phase-8-results-documentation--thesis-figures) | Results Documentation & Thesis Figures | 🤖 | 📋 AWAITING FULL DATA |
 
 ---
 
@@ -62,7 +62,7 @@
 
 ## Phase 3: Data Collection (Google Form Deployment)
 **Who:** 👤  
-**Status:** 🟡 IN PROGRESS (Pilot n=67 Collected, Main survey active)
+**Status:** 🟡 IN PROGRESS (Target: 200–300 responses)
 
 > **Live Survey Link:** [Google Form URL](https://docs.google.com/forms/d/e/1FAIpQLSe4NH1NZNCcIBUWQcyzowVXBe8gpynHXB833jLdZdFnl9-hgw/viewform)  
 > **Edit/Responses URL:** [Edit Form URL](https://docs.google.com/forms/d/1wstOB3-JVECSQfNWOc3LlqUmE9EStvNeYrKnz_mebGs/edit)
@@ -72,7 +72,7 @@
 - [x] Pilot study রেসপন্স গ্রহণ (n=67 responses collected)
 - [x] Pilot feedback ও schema validation
 - [x] CSV export → `data/raw/survey_responses.csv`
-- [ ] Main data collection expansion (Target: n ≥ 150–250+ for thesis defense)
+- [ ] Main data collection expansion (Target: n = 200–300 responses for final thesis defense & statistical power)
 
 ---
 
@@ -108,47 +108,52 @@
 
 ## Phase 5: Preprocessing Pipeline & Stratified Split
 **Who:** 🤖  
-**Status:** 📋 UP NEXT
+**Status:** 🟡 TESTED & READY (Commit: `3407a42`)
 
-### Tasks
-- [ ] Target variables: `dep_risk` (PHQ-9 ≥ 10), `anx_risk` (GAD-7 ≥ 10)
-- [ ] Train/test stratified split (80/20) with zero data-leakage
-- [ ] Feature transformations (One-hot encoding for categorical, Robust/Standard scaling for continuous)
-- [ ] Outlier winsorization (5th–95th percentile)
-- [ ] SMOTE balance on training set only
-- [ ] 3 Ablation Configurations (Clinical only, + Social Support, + Job Behavioral)
-- [ ] Pipeline verification & dry-run
+### Checklist & Completed Tasks
+- [x] Target variables setup: `dep_risk` (PHQ-9 ≥ 10), `anx_risk` (GAD-7 ≥ 10)
+- [x] Train/test stratified split (80/20) with strict zero data-leakage
+- [x] Robust dynamic categorical & numerical feature detection implemented in `src/preprocessing.py`
+- [x] One-hot encoding & StandardScaler transformer pipeline verified
+- [x] Training-set-only SMOTE balancing tested successfully
+- [x] End-to-end dry-run sanity test script (`src/run_phase5_6_sanity.py`) passed without error
+- [ ] Final fit on full dataset (Pending n=200–300 responses)
 
 ---
 
 ## Phase 6: ML Modeling & Cross-Validation
 **Who:** 🤖  
-**Status:** 📋 TODO
+**Status:** 🟡 TESTED & READY (Commit: `3407a42`)
 
-### Tasks
-- [ ] Baseline models: Logistic Regression, SVM, Random Forest, XGBoost
-- [ ] Stratified 5-fold cross-validation
-- [ ] Hyperparameter tuning via GridSearchCV
-- [ ] Evaluation metrics: Macro-F1, Precision, Recall, Specificity, ROC-AUC with 95% CIs
-- [ ] Model artifacts export (`models/`)
+### Checklist & Completed Tasks
+- [x] 5 Baseline ML classifiers configured & tested:
+  - Logistic Regression (L2 regularized)
+  - Support Vector Machine (RBF kernel, probability calibration)
+  - Random Forest Classifier
+  - XGBoost Classifier
+  - LightGBM Classifier
+- [x] End-to-end fitting & prediction verified with evaluation metrics (F1, Precision, Recall, ROC-AUC)
+- [ ] 5-fold Stratified Cross-Validation on final dataset (Pending n=200–300 responses)
+- [ ] Hyperparameter tuning via GridSearchCV on final dataset
+- [ ] Final trained model serialization (`models/`)
 
 ---
 
 ## Phase 7: SHAP Explainability & Error Analysis
 **Who:** 🤖  
-**Status:** 📋 TODO
+**Status:** 🟡 TESTED & READY (Commit: `3407a42`)
 
-### Tasks
-- [ ] SHAP TreeExplainer & KernelExplainer initialization
-- [ ] Global feature importance (summary bar + beeswarm plots)
-- [ ] Localized case studies (Waterfall plots for high-risk, low-risk, borderline)
-- [ ] False Negative analysis for clinical safety
+### Checklist & Completed Tasks
+- [x] SHAP TreeExplainer integration validated on fitted Tree ensemble
+- [x] Summary Bar Plot & Beeswarm Plot generation verified (`figures/sanity_dep_risk_*`)
+- [ ] Global feature importance & ranking on full dataset (Pending n=200–300)
+- [ ] Localized Waterfall plots (False Negative risk safety & case studies) on full dataset
 
 ---
 
 ## Phase 8: Results Documentation & Thesis Figures
 **Who:** 🤖  
-**Status:** 📋 TODO
+**Status:** 📋 AWAITING FULL DATA
 
 ### Tasks
 - [ ] 300 DPI publication figures compilation
@@ -158,4 +163,4 @@
 
 ---
 
-*Last updated: 2026-10-03 (Post-Phase 4 Audit)*
+*Last updated: 2026-10-04 (Phase 5, 6 & 7 Sanity Check Passed — Waiting for Main Data Collection n=200-300)*
