@@ -12,46 +12,50 @@ df_raw = pd.read_csv(RAW_CSV, encoding='utf-8-sig')
 print(f'Raw shape: {df_raw.shape}')
 
 col_map = {
-    df_raw.columns[0]:  'timestamp',
-    df_raw.columns[1]:  'consent',
-    df_raw.columns[2]:  'b1_gender',
-    df_raw.columns[3]:  'b2_age',
-    df_raw.columns[4]:  'b3_university_type',
-    df_raw.columns[5]:  'b4_discipline',
-    df_raw.columns[6]:  'b5_cgpa',
-    df_raw.columns[7]:  'b6_graduation_status',
-    df_raw.columns[8]:  'b7_income',
-    df_raw.columns[9]:  'b8_financial_pressure',
-    df_raw.columns[10]: 'c1_search_duration',
-    df_raw.columns[11]: 'c2_apps_per_week',
-    df_raw.columns[12]: 'c3_hrs_per_week',
-    df_raw.columns[13]: 'c4_late_night',
-    df_raw.columns[14]: 'c5_platforms',
-    df_raw.columns[15]: 'c6_rejections',
-    df_raw.columns[16]: 'c7_ghosting_rate',
-    df_raw.columns[17]: 'c8_interview_invites',
-    df_raw.columns[18]: 'c9_cv_customization',
-    df_raw.columns[19]: 'c10_peer_comparison',
-    df_raw.columns[20]: 'c11_family_pressure',
-    df_raw.columns[21]: 'c12_stigma_fear',
-    df_raw.columns[22]: 'c13_hopelessness',
-    df_raw.columns[23]: 'c14_screen_time',
-    df_raw.columns[24]: 'd1_mspss', df_raw.columns[25]: 'd2_mspss',
-    df_raw.columns[26]: 'd3_mspss', df_raw.columns[27]: 'd4_mspss',
-    df_raw.columns[28]: 'd5_mspss', df_raw.columns[29]: 'd6_mspss',
-    df_raw.columns[30]: 'd7_mspss', df_raw.columns[31]: 'd8_mspss',
-    df_raw.columns[32]: 'd9_mspss', df_raw.columns[33]: 'd10_mspss',
-    df_raw.columns[34]: 'd11_mspss', df_raw.columns[35]: 'd12_mspss',
-    df_raw.columns[36]: 'e1_phq9',  df_raw.columns[37]: 'e2_phq9',
-    df_raw.columns[38]: 'e3_phq9',  df_raw.columns[39]: 'e4_phq9',
-    df_raw.columns[40]: 'e5_phq9',  df_raw.columns[41]: 'e6_phq9',
-    df_raw.columns[42]: 'e7_phq9',  df_raw.columns[43]: 'e8_phq9',
-    df_raw.columns[44]: 'e9_phq9',
-    df_raw.columns[45]: 'f1_gad7',  df_raw.columns[46]: 'f2_gad7',
-    df_raw.columns[47]: 'f3_gad7',  df_raw.columns[48]: 'f4_gad7',
-    df_raw.columns[49]: 'f5_gad7',  df_raw.columns[50]: 'f6_gad7',
-    df_raw.columns[51]: 'f7_gad7',
-    df_raw.columns[52]: 'g1_attention',
+    # col[0] = Serial Number  →  skip (drop below)
+    # col[1] = Timestamp      →  timestamp
+    df_raw.columns[1]:  'timestamp',
+    df_raw.columns[2]:  'consent',
+    df_raw.columns[3]:  'b1_gender',
+    df_raw.columns[4]:  'b2_age',
+    df_raw.columns[5]:  'b3_university_type',
+    df_raw.columns[6]:  'b4_discipline',
+    df_raw.columns[7]:  'b5_cgpa',
+    df_raw.columns[8]:  'b6_graduation_status',
+    df_raw.columns[9]:  'b7_income',
+    df_raw.columns[10]: 'b8_financial_pressure',
+    df_raw.columns[11]: 'c1_search_duration',
+    df_raw.columns[12]: 'c2_apps_per_week',
+    df_raw.columns[13]: 'c3_hrs_per_week',
+    df_raw.columns[14]: 'c4_late_night',
+    df_raw.columns[15]: 'c5_platforms',
+    df_raw.columns[16]: 'c6_rejections',
+    df_raw.columns[17]: 'c7_ghosting_rate',
+    df_raw.columns[18]: 'c8_interview_invites',
+    df_raw.columns[19]: 'c9_cv_customization',
+    df_raw.columns[20]: 'c10_peer_comparison',
+    df_raw.columns[21]: 'c11_family_pressure',
+    df_raw.columns[22]: 'c12_stigma_fear',
+    df_raw.columns[23]: 'c13_hopelessness',
+    df_raw.columns[24]: 'c14_screen_time',
+    df_raw.columns[25]: 'd1_mspss', df_raw.columns[26]: 'd2_mspss',
+    df_raw.columns[27]: 'd3_mspss', df_raw.columns[28]: 'd4_mspss',
+    df_raw.columns[29]: 'd5_mspss', df_raw.columns[30]: 'd6_mspss',
+    df_raw.columns[31]: 'd7_mspss', df_raw.columns[32]: 'd8_mspss',
+    df_raw.columns[33]: 'd9_mspss', df_raw.columns[34]: 'd10_mspss',
+    df_raw.columns[35]: 'd11_mspss', df_raw.columns[36]: 'd12_mspss',
+    df_raw.columns[37]: 'e1_phq9',  df_raw.columns[38]: 'e2_phq9',
+    df_raw.columns[39]: 'e3_phq9',  df_raw.columns[40]: 'e4_phq9',
+    df_raw.columns[41]: 'e5_phq9',  df_raw.columns[42]: 'e6_phq9',
+    df_raw.columns[43]: 'e7_phq9',  df_raw.columns[44]: 'e8_phq9',
+    df_raw.columns[45]: 'e9_phq9',
+    df_raw.columns[46]: 'f1_gad7',  df_raw.columns[47]: 'f2_gad7',
+    df_raw.columns[48]: 'f3_gad7',  df_raw.columns[49]: 'f4_gad7',
+    df_raw.columns[50]: 'f5_gad7',  df_raw.columns[51]: 'f6_gad7',
+    df_raw.columns[52]: 'f7_gad7',
+    df_raw.columns[53]: 'g1_attention',
+    # col[54] = Institution Context  →  skip
+    # col[55] = Data Provenance      →  skip
 }
 
 df = df_raw.rename(columns=col_map).drop(columns=['timestamp'], errors='ignore')
@@ -60,7 +64,7 @@ df = df_raw.rename(columns=col_map).drop(columns=['timestamp'], errors='ignore')
 n0 = len(df)
 
 # Consent
-df = df[df['consent'].str.contains('consent|Yes', case=False, na=False)]
+df = df[df['consent'].str.contains('সম্মতি|consent|Yes|হ্যাঁ', case=False, na=False)]
 n_consent = n0 - len(df)
 print(f'Non-consent removed: {n_consent}, remaining: {len(df)}')
 

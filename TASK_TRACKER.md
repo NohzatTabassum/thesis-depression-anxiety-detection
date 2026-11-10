@@ -16,11 +16,11 @@
 | [Phase 0](#phase-0-github-repository-setup) | GitHub Repository Setup | 🤝 | ✅ DONE |
 | [Phase 1](#phase-1-google-form-design--structure) | Google Form Design & Structure | 🤖→👤 | ✅ DONE |
 | [Phase 2](#phase-2-project-folder-structure--python-pipeline-skeleton) | Project Folder Structure & Python Pipeline Skeleton | 🤖 | ✅ DONE |
-| [Phase 3](#phase-3-data-collection--google-form-deployment) | Data Collection (Google Form Deployment) | 👤 | ✅ DONE (n=126 collected, n=85 clean) |
-| [Phase 4](#phase-4-data-ingestion--eda) | Data Ingestion, Quality Audit & EDA | 🤖 | ✅ DONE |
-| [Phase 5](#phase-5-preprocessing-pipeline) | Preprocessing Pipeline & Stratified Split | 🤖 | ✅ DONE (Commit: `35a648b`) |
-| [Phase 6](#phase-6-ml-modeling--cv) | ML Modeling & Cross-Validation | 🤖 | ✅ DONE (Commit: `35a648b`) |
-| [Phase 7](#phase-7-shap-explainability--error-analysis) | SHAP Explainability & Error Analysis | 🤖 | ✅ DONE (Commit: `35a648b`) |
+| [Phase 3](#phase-3-data-collection--google-form-deployment) | Data Collection (Google Form Deployment) | 👤 | ✅ DONE (n=487 raw → n=425 clean) |
+| [Phase 4](#phase-4-data-ingestion--eda) | Data Ingestion, Quality Audit & EDA | 🤖 | ✅ DONE (N=425, 5 EDA figures) |
+| [Phase 5](#phase-5-preprocessing-pipeline) | Preprocessing Pipeline & Stratified Split | 🤖 | ✅ DONE |
+| [Phase 6](#phase-6-ml-modeling--cv) | ML Modeling & Cross-Validation | 🤖 | ✅ DONE — Best: RF (dep, CV AUC=0.661) · SVM (anx, CV AUC=0.847) |
+| [Phase 7](#phase-7-shap-explainability--error-analysis) | SHAP Explainability & Error Analysis | 🤖 | ✅ DONE — Top Feature: c13_hopelessness (both targets) |
 | [Phase 8](#phase-8-results-documentation--thesis-figures) | Results Documentation & Thesis Figures | 🤖 | 📋 UP NEXT |
 
 ---
@@ -62,7 +62,7 @@
 
 ## Phase 3: Data Collection (Google Form Deployment)
 **Who:** 👤  
-**Status:** ✅ DONE (n=126 raw collected → n=85 clean after QC filtering)
+**Status:** ✅ DONE (n=487 raw collected → n=425 clean after QC filtering)
 
 > **Live Survey Link:** [Google Form URL](https://docs.google.com/forms/d/e/1FAIpQLSe4NH1NZNCcIBUWQcyzowVXBe8gpynHXB833jLdZdFnl9-hgw/viewform)  
 > **Edit/Responses URL:** [Edit Form URL](https://docs.google.com/forms/d/1wstOB3-JVECSQfNWOc3LlqUmE9EStvNeYrKnz_mebGs/edit)
@@ -72,7 +72,7 @@
 - [x] Pilot study রেসপন্স গ্রহণ (n=67 responses collected)
 - [x] Pilot feedback ও schema validation
 - [x] CSV export → `data/raw/survey_responses.csv`
-- [x] Main data collection completed: n=126 raw → **n=85 clean** (after Consent/Attention/Quality filters)
+- [x] Extended data collection: n=487 raw → **n=425 clean** (after Consent/Attention/Quality filters)
 
 ---
 
